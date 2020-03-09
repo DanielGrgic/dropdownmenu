@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Main Function
+### HandCoded DropDownMenu, show and hide dropdown menu when click button and menu item.
+### Hide when click outside of menu.
+
 ## Available Scripts
 
 In the project directory, you can run:

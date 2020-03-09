@@ -1,10 +1,30 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import ReactDOM from "react-dom";
+
 import './App.css';
 
 function App() {
 
   const ref = useRef(null);
   const [opened, setOpened] = useState(false);
+
+  useEffect(() => {
+    const handleDocumentClick = event => {
+      if (ref.current) {
+        if (!ReactDOM.findDOMNode(ref.current).contains(event.target)) {
+          if (opened) {
+            setOpened(false);
+          }
+        }
+      }
+    };
+
+    document.addEventListener("click", handleDocumentClick, false);
+
+    return () => {
+      document.removeEventListener("click", handleDocumentClick, false);
+    };
+  }, [ref, opened]);
 
   return (
     <div className="App">
