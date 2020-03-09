@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useRef } from 'react';
 import './App.css';
 
 function App() {
+
+  const ref = useRef(null);
+  const [opened, setOpened] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="dropdown-container" ref={ref}>
+        <button className="btn-dropdown" onClick={() => setOpened(!opened)}>DropDown</button>
+        {
+          opened && (
+            <ul className="dropdown-menu">
+              <li onClick={() => setOpened(false)}>Menu Item1</li>
+              <li onClick={() => setOpened(false)}>Menu Item2</li>
+              <li onClick={() => setOpened(false)}>Menu Item3</li>
+              <li onClick={() => setOpened(false)}>Menu Item4</li>
+            </ul>
+          )
+        }
+      </div>
     </div>
   );
 }
